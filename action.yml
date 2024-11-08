@@ -5,7 +5,7 @@ inputs:
     required: false
     default: 'humble'
 
-outputs:
+outputs:workspace
   archives:
     value: ${{ steps.build.outputs.archives }}
 
@@ -22,6 +22,6 @@ runs:
     - id: build
       run: |
         ARCHIVES=$(mktemp -d)
-        docker run -v $(pwd):/workspace -v $ARCHIVES:/archives ros2-deb-build
+        docker run -v $(pwd):/ -v $ARCHIVES:/archives ros2-deb-build
         echo "archives=$(echo $ARCHIVES)" >> $GITHUB_OUTPUT
       shell: bash

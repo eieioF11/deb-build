@@ -1,4 +1,4 @@
-FROM ros:DISTRO
+FROM ros:humble
 
 RUN apt update && apt install -y \
   curl \
